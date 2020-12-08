@@ -36,3 +36,6 @@ echo "[setup.sh] start docker.service"
 systemctl start docker.service
 echo "[setup.sh] status docker.service"
 systemctl status docker.service
+echo "[setup.sh] finished"
+
+exit 0
