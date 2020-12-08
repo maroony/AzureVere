@@ -5,7 +5,6 @@ set -o pipefail
 
 dockerVersionSub="18.09.6"
 dockerversion="5:${dockerVersionSub}~3-0~ubuntu-bionic"
-shift
 
 USER_MOUNTPOINT=/mnt
 
