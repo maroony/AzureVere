@@ -35,7 +35,7 @@ systemctl disable docker.service
 echo "[setup.sh] start docker.service"
 systemctl start docker.service
 echo "[setup.sh] status docker.service"
-systemctl status docker.service
+systemctl status docker.service || true
 echo "[setup.sh] finished"
 
 exit 0
