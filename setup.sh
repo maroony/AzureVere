@@ -8,7 +8,7 @@ dockerversion="5:${dockerVersionSub}~3-0~ubuntu-bionic"
 
 USER_MOUNTPOINT=/mnt
 
-# install docker
+echo "[setup.sh] install docker"
 apt update
 apt install -y -q -o Dpkg::Options::="--force-confnew" --no-install-recommends \
     apt-transport-https \
