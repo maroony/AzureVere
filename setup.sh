@@ -9,13 +9,17 @@ dockerversion="5:${dockerVersionSub}~3-0~ubuntu-bionic"
 USER_MOUNTPOINT=/mnt
 
 # install docker
-apt-get update
-apt-get install -y -q -o Dpkg::Options::="--force-confnew" --no-install-recommends \
-    apt-transport-https ca-certificates curl software-properties-common cgroup-lite
+apt update
+apt install -y -q -o Dpkg::Options::="--force-confnew" --no-install-recommends \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-apt-get update
-apt-get install -y -q -o Dpkg::Options::="--force-confnew" --no-install-recommends \
+apt update
+apt install -y -q -o Dpkg::Options::="--force-confnew" --no-install-recommends \
     "docker-ce=${dockerversion}" "docker-ce-cli=${dockerversion}" containerd.io
 
 # prep docker
