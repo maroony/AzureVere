@@ -37,7 +37,7 @@ sed -i 's|^ExecStart=/usr/bin/dockerd.*|ExecStart=/usr/bin/dockerd|' /lib/system
 # pull necassary images for offline node prepartion
 mcrRepo="mcr.microsoft.com"
 docker pull "${mcrRepo}/blobxfer:${blobxferVersion}"
-docker pull "${mcrRepo}/azure-batch/${shipyardVersion}"
+docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}"
 
 echo "[setup.sh] daemon-reload"
 systemctl daemon-reload
