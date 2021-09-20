@@ -9,7 +9,7 @@ dockerversion="5:${dockerVersionSub}~3-0~ubuntu-bionic"
 blobxferVersion="1.9.4"
 # @see: batch-shipyard/convoy/version.py [https://github.com/Azure/batch-shipyard/blob/d6da749f9cd678037bd520bc074e40066ea35b56/convoy/version.py]
 shipyardVersion="3.9.1"
-userMountpoint=/mnt
+userMountpoint="/mnt"
 
 echo "[setup.sh] install docker"
 apt update
@@ -34,11 +34,6 @@ mkdir -p /etc/docker
 echo "{ \"data-root\": \"${userMountpoint}/docker\", \"hosts\": [ \"unix:///var/run/docker.sock\", \"tcp://127.0.0.1:2375\" ] }" > /etc/docker/daemon.json
 sed -i 's|^ExecStart=/usr/bin/dockerd.*|ExecStart=/usr/bin/dockerd|' /lib/systemd/system/docker.service
 
-# pull necassary images for offline node prepartion
-mcrRepo="mcr.microsoft.com"
-docker pull "${mcrRepo}/blobxfer:${blobxferVersion}"
-docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}"
-
 echo "[setup.sh] daemon-reload"
 systemctl daemon-reload
 # do not auto-enable docker to start due to temp disk issues
@@ -48,6 +43,12 @@ echo "[setup.sh] start docker.service"
 systemctl start docker.service
 #echo "[setup.sh] status docker.service"
 #systemctl status docker.service || true
+
+# pull necassary images for offline node prepartion
+mcrRepo="mcr.microsoft.com"
+docker pull "${mcrRepo}/blobxfer:${blobxferVersion}"
+docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}"
+
 echo "[setup.sh] finished"
 
 exit 0
