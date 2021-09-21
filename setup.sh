@@ -39,8 +39,6 @@ echo "[setup.sh] disable docker.service"
 systemctl disable docker.service
 echo "[setup.sh] start docker.service"
 systemctl start docker.service
-echo "[setup.sh] status docker.service"
-systemctl status docker.service || true
 
 # pull necassary images for offline node prepartion
 mcrRepo="mcr.microsoft.com"
