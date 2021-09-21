@@ -47,7 +47,7 @@ systemctl start docker.service
 # pull necassary images for offline node prepartion
 mcrRepo="mcr.microsoft.com"
 docker pull "${mcrRepo}/blobxfer:${blobxferVersion}"
-docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}"
+docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}-cargo"
 
 echo "[setup.sh] finished"
 
