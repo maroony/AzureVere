@@ -44,6 +44,7 @@ systemctl start docker.service
 mcrRepo="mcr.microsoft.com"
 docker pull "${mcrRepo}/blobxfer:${blobxferVersion}"
 docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}-cargo"
+docker pull "${mcrRepo}/azure-batch/shipyard:${shipyardVersion}-cascade-docker"
 
 echo "[setup.sh] finished"
 
